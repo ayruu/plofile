@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>konriri Profile</title>
+  <link rel="stylesheet" href="konriri.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>profile</h1>
+      <div class="profile">
+        <div class="circle-frame">
+          <img src="konriri.jpg" alt="Profile" class="profile-img">
+        </div>
+        <h2>こんりり</h2>
+        <p>インターネットスーパーアイドル</p>
+      </div>
+    </header>
+
+    <main>
+      <button class="link" onclick="openLink('https://twitch.tv/ririchanvl')">
+        Twitch<br><span>たまに配信してます</span>
+      </button>
+      <button class="link" onclick="openLink('https://x.com/konkonriri18?s=21&t=F4_Sltrqtha5_wPhWxtRVg')">
+        x (Twitter)<br><span>日常</span>
+      </button>
+    </main>
+  </div>
+
+  <script>
+    function openLink(url) {
+      window.open(url, '_blank');
+    }
+
+    const images = [
+      'omake1.png',
+      'omake2.png',
+      'omake3.png',
+      'omake4.png'
+    ];
+
+    const isMobile = window.innerWidth <= 480;
+    const STAMP_SIZE = isMobile ? 40 : 60;
+    const spacing = isMobile ? 70 : 80;
+    const cols = Math.ceil(window.innerWidth / spacing);
+    const rows = Math.ceil(window.innerHeight / spacing);
+
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < cols; x++) {
+        const stamp = document.createElement('div');
+        stamp.className = 'bg-stamp';
+        stamp.style.left = `${x * spacing}px`;
+        stamp.style.top = `${y * spacing}px`;
+        stamp.style.width = `${STAMP_SIZE}px`;
+        stamp.style.height = `${STAMP_SIZE}px`;
+        stamp.style.backgroundImage = `url('${images[Math.floor(Math.random() * images.length)]}')`;
+        stamp.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`;
+        document.body.appendChild(stamp);
+      }
+    }
+  </script>
+</body>
+</html>
